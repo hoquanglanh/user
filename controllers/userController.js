@@ -9,10 +9,10 @@ const showForm = (req, res) => {
 
 // Xử lý thêm người dùng
 const addUser = async (req, res) => {
-  const { name, email } = req.body;
+  const { name, email, role } = req.body;
   try {
     if (name && email) {
-      const newUser = new User({ name, email });
+      const newUser = new User({ name, email, role });
       await newUser.save();
     }
     res.redirect("/users");
@@ -48,9 +48,9 @@ const editUser = async (req, res) => {
 // Xử lý cập nhật người dùng
 const updateUser = async (req, res) => {
   const userId = req.params.id;
-  const { name, email } = req.body;
+  const { name, email, role } = req.body;
   try {
-    await User.findByIdAndUpdate(userId, { name, email });
+    await User.findByIdAndUpdate(userId, { name, email, role });
     res.redirect("/users");
   } catch (error) {
     console.error("Lỗi khi cập nhật người dùng:", error);

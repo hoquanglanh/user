@@ -1,47 +1,208 @@
-<!-- views/index.ejs -->
-
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thêm Người Dùng</title>
-  <!-- Thêm Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .card-header h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .card-body {
+      padding: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #4a5568;
+      font-weight: 600;
+    }
+
+    .input-group {
+      display: flex;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .input-group:focus-within {
+      border-color: #667eea;
+      box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+
+    .input-group-icon {
+      display: flex;
+      align-items: center;
+      padding: 0.8rem;
+      background: transparent;
+      color: #4a5568;
+      border-right: 2px solid #e0e0e0;
+    }
+
+    input,
+    select {
+      flex: 1;
+      padding: 0.8rem;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #667eea;
+      border: 2px solid #667eea;
+      padding: 0.8rem;
+      border-radius: 10px;
+      width: 100%;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: #667eea;
+      color: white;
+    }
+
+    @media (max-width: 480px) {
+      .card-header {
+        padding: 1.5rem;
+      }
+
+      .card-body {
+        padding: 1.5rem;
+      }
+
+      .card-header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
-<body class="bg-light">
 
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card shadow-sm">
-          <div class="card-header text-center">
-            <h2>Thêm Người Dùng</h2>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h1><i class="fas fa-user-plus me-2"></i> Thêm Người Dùng</h1>
+      </div>
+      <div class="card-body">
+        <form action="/add-user" method="POST">
+          <div class="form-group">
+            <label class="form-label" for="name">Tên người dùng</label>
+            <div class="input-group">
+              <span class="input-group-icon">
+                <i class="fas fa-user"></i>
+              </span>
+              <input type="text" id="name" name="name" required placeholder="Nhập tên người dùng">
+            </div>
           </div>
-          <div class="card-body">
-            <form action="/add-user" method="POST">
-              <div class="mb-3">
-                <label for="name" class="form-label">Tên:</label>
-                <input type="text" id="name" name="name" class="form-control" placeholder="Nhập tên" required>
-              </div>
 
-              <div class="mb-3">
-                <label for="email" class="form-label">Email:</label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="Nhập email" required>
-              </div>
-
-              <button type="submit" class="btn btn-primary w-100">Thêm Người Dùng</button>
-            </form>
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <div class="input-group">
+              <span class="input-group-icon">
+                <i class="fas fa-envelope"></i>
+              </span>
+              <input type="email" id="email" name="email" required placeholder="Nhập địa chỉ email">
+            </div>
           </div>
-        </div>
-        <div class="text-center mt-3">
-          <a href="/users" class="btn btn-secondary">Xem Danh Sách Người Dùng</a>
-        </div>
+
+          <div class="form-group">
+            <label class="form-label" for="role">Vai trò</label>
+            <div class="input-group">
+              <span class="input-group-icon">
+                <i class="fas fa-user-tag"></i>
+              </span>
+              <select id="role" name="role">
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+                <option value="Guest">Guest</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary">
+            <i class="fas fa-plus-circle"></i> Thêm Người Dùng
+          </button>
+
+          <button type="button" class="btn-secondary" onclick="window.location.href='/users'">
+            <i class="fas fa-list"></i> Xem Danh Sách
+          </button>
+        </form>
       </div>
     </div>
   </div>
-
-  <!-- Thêm Bootstrap JS và Popper.js -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

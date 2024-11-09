@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Kết nối tới MongoDB
 mongoose
-  .connect("mongodb+srv://tranquocdong102:g0jN1tD6Z7DjEepu@cluster0.s51on.mongodb.net/userDB")
+  .connect("mongodb+srv://lanhlanh1245:gzo4wBrfZ4hL52l7@cluster0.h1rpz.mongodb.net/")
   .then(() => {
     console.log("Kết nối thành công tới MongoDB");
   })
